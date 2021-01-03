@@ -1,29 +1,38 @@
-apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kubernetesdemo
+  creationTimestamp: null
   labels:
-    app: kubernetesdemo
+    app: demo
+  name: demo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: kubernetesdemo
+      app: demo
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: demo
     spec:
       containers:
-        - name: kubernetesdemo
-          image: tharindupro/mywebapp
+        - image: tharindupro/mywebapp
+          name: mywebapp
+          resources: {}
           ports:
             - containerPort: 8080
+status: {}
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: kubernetesdemo
+  labels:
+  name: demo
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
-    app: kubernetesdemo
+    app: demo
   ports:
     - protocol: TCP
       port: 8080
