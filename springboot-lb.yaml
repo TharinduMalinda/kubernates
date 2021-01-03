@@ -1,34 +1,34 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ak-angular-app-poc-deployment
+  name: demo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ak-angular-app
+      app: demo
   template:
     metadata:
       labels:
-        app: ak-angular-app
+        app: demo
     spec:
       containers:
-        - name: ak-angular-app
+        - name: mywebapp
           image: tharindupro/mywebapp
           ports:
-            - containerPort: 8085
+            - containerPort: 8080
 
 # service type loadbalancer
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: ak-angular-svc
+  name: demo
 spec:
   selector:
-    app: ak-angular-app
+    app: demo
   ports:
     - protocol: TCP
       port: 8085
-      targetPort: 8085
+      targetPort: 8080
   type: LoadBalancer
