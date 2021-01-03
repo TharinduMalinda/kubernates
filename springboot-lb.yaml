@@ -21,19 +21,4 @@ spec:
         - image: tharindupro/mywebapp
           name: mywebapp
           resources: {}
-          ports:
-    - containerPort: 8888
 status: {}
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: angular-app-svc
-spec:
-  selector:
-    app: angular-app
-  ports:
-    - protocol: TCP
-      port: 8888
-      targetPort: 8888
-  type: LoadBalancer
