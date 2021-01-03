@@ -1,23 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-ak-deployment
+  creationTimestamp: null
+  labels:
+    app: demo
+  name: demo
 spec:
-  replicas:1
+  replicas: 1
   selector:
     matchLabels:
-      app: angular-app
+      app: demo
+  strategy: {}
   template:
     metadata:
+      creationTimestamp: null
       labels:
-        app: angular-app
+        app: demo
     spec:
       containers:
-        - name:my-angular-app
-          image:tharindupro/mywebapp:latest
-          imagePullPolicy:Always
+        - image: tharindupro/mywebapp
+          name: mywebapp
+          resources: {}
           ports:
-            - containerPort: 8888
+    - containerPort: 8888
+status: {}
 
 apiVersion: v1
 kind: Service
