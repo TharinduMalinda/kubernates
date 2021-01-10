@@ -30,7 +30,7 @@ public class ConstellationMonitorService {
         ca1.setLatitude(1234567d);
         ca1.setLongitude(2345678d);
         constellationAssignList.add(ca1);
-        System.out.println("hello22223333333wwweeeeeeerrrre");
+        System.out.println("dev");
 
         ConstellationAssign ca2 = new ConstellationAssign();
         ca2.setConstellationAssignId(2l);
